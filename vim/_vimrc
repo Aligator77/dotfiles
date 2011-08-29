@@ -1,0 +1,126 @@
+set nocompatible
+"set showbreak=>>\  " Precede continued screen lines
+set autoindent		" always set autoindenting on
+set history=150		" keep 50 lines of command line history
+set ruler		" show the cursor position all the time
+set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
+syntax on
+set hlsearch
+autocmd FileType text setlocal textwidth=78
+"set textwidth=78
+"set grepformat=%f:%l:%m
+set undolevels=4000
+set tabstop=4
+set shiftwidth=4
+set expandtab
+"set smarttab
+set lazyredraw    " Do not update screen while executing macros
+"set list listchars=tab:>_,trail:_,extends:+ " ,eol:$ " Show tabs, trailing spaces, long lines
+set matchpairs=(:),{:},[:],<:> " Matching pair characters
+"set mouse=a       " Use mouse in all modes
+set shortmess=filnxtToO   " Overwrite message for writing a file with subsequent message
+set showmatch     " When a bracket is inserted, briefly jump to the matching one
+set matchtime=1
+set sidescroll=1  " The minimal number of columns to scroll horizontally
+set nostartofline " Keep curosr's column
+set suffixes=     " Set a priority between files with almost the same name
+
+set whichwrap=b,s,h,l,<,>,[,] " Wrap to the previous/next line on all keys
+"set wildmenu      " Command-line completion operates in an enhanced mode
+"set wildmode=longest,list,list:full " Bash-vim wildcard behavior
+set wrap        " Do not visually wrap long lines  - do not make it look like there are line breaks where there aren't
+set tildeop
+set errorbells
+set visualbell
+set autowrite
+"set si
+"set cindent
+set smartindent
+"set patchmode=.orig
+
+"Показываем табы в начале строки точками
+set listchars=tab:··
+set list
+
+
+
+"menu on F10
+so $VIMRUNTIME/menu.vim
+set wildmenu
+"set wildmode=list:longest
+set wildmode=longest,list
+set cpo-=<
+set wcm=<C-Z>
+map <F10> :emenu <C-Z>
+"end menu
+
+
+
+set winheight=19
+
+
+"localization
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch =0
+set helplang=ru
+set langmenu=ru_ru
+
+"set langmap=T`ИqЖwСeЙrЕtМyЦuЬiЫoГpУ[З]ТaШsБdЮfОgПhНjКkДlФ\\;Щ'ЪzВxЯcЛvХbРnЭmА\\,Ч.¬~иQжWсEйRеTмYцUьIыOгPу{з}тAшSбDюFоGпHнJкKдLф:щ\\"ъZвXяCлVхBрNэMа<ч>
+"set langmap=©жг...‰–“...;qwe...QWE...
+"set keymap=russian-cp866
+"set charconvert=CharConvert()
+"fun CharConvert()
+"  system("recode "
+"	\ . v:charconvert_from . ".." . v:charconvert_to
+"	\ . " <" . v:fname_in . " >" v:fname_out)
+"  return v:shell_error
+"endfun
+
+if has("Win32")
+    au GUIEnter * exe 'simalt ~Р'
+endif
+
+if has("Win32")
+        set fileencodings=utf-8,cp1251,cp866,koi8-r,ucs-bom,latin1
+    elseif has("dos32")
+        set fileencodings=utf-8,cp1251,cp866,koi8-r,ucs-bom,latin1
+    elseif has("unix")
+        set fileencodings=utf-8,koi8-r,cp1251,cp866,ucs-bom,latin1
+endif
+set clipboard=unnamed
+set smartcase
+set ignorecase
+set guioptions=aAegrmt
+"colors
+"colorscheme koehler
+"colorscheme darkblue
+"colorscheme torte
+colorscheme relaxedgreen
+"colorscheme pyte
+
+"peaksea
+"colorscheme peaksea
+"if has("gui_running") 
+"    set background=light
+"endif
+"if ! has("gui_running") 
+"    set t_Co=256 
+"endif
+
+"
+"maps
+map <F7> <Esc>:make<CR>
+map <C-F7> <Esc>:make clean<Esc>:make<CR>
+imap <F2> <Esc>:wa<CR>i
+map <F2> :wa<CR>
+map <F3> <Esc>:%s/\(<C-R>/\)/
+map <S-F3> <Esc>:%s/<C-R>"/
+map <F6> :buffers<CR>
+imap <F6> <Esc>:buffers<CR>
+imap <BS> <Left><Del>
+nmap <silent> \/ :let @/=''<CR>
+noremap <silent> <F11> :cal VimCommanderToggle()<CR>
+
+let g:NERDShutUp = 1
